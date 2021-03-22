@@ -19,16 +19,21 @@ EMAIL = 'martin@pidev.com'
 AUTHOR = 'Martin Pytel'
 REQUIRES_PYTHON = '>=3.6.0'
 VERSION = '0.1.0'
-
 # What packages are required for this module to be executed?
-REQUIRED = [
-    # 'requests', 'maya', 'records',
-]
-
+REQUIRED = []
 # What packages are optional?
-EXTRAS = {
-    # 'fancy feature': ['django'],
-}
+EXTRAS = {}
+LICENSE = 'piDev'  # piDev
+CLASSIFIER = [
+    # Trove classifiers
+    # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
+    'License :: Other/Proprietary License',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.6',
+    'Programming Language :: Python :: Implementation :: CPython',
+    'Programming Language :: Python :: Implementation :: PyPy'
+]
 
 # The rest you shouldn't have to touch too much :)
 # ------------------------------------------------
@@ -113,17 +118,8 @@ setup(
     install_requires=REQUIRED,
     extras_require=EXTRAS,
     include_package_data=True,
-    license='MIT',
-    classifiers=[
-        # Trove classifiers
-        # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
-        'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: Implementation :: CPython',
-        'Programming Language :: Python :: Implementation :: PyPy'
-    ],
+    license=LICENSE,
+    classifiers=CLASSIFIER,
     # $ setup.py publish support.
     cmdclass={
         'upload': UploadCommand,

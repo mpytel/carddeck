@@ -1,70 +1,71 @@
+from .cards import cards
 import random
 
-'''
-   test
 
-   from deck import deck
-   myD = deck()
-   myD.shuffle()
-
-'''
-
-class deck:
-
+class deck():
   def __init__(self):
-    self.sutes = ['︎♠︎','♣︎','♥︎','♦︎']
-    self.kind = ['A','2','3','4','5','6','7','8','9','10','J','Q','K']
-    self.cards = []
-    for i in self.sutes:
-      for j in self.kind:
-        self.cards.append(j+i)
-    self.deck = self.cards.copy()
-  
+    self.cards = cards()
+    self.deck = self.cards.getcards()
+    self.hands = dict()
+
   def shuffle(self, deck=None):
+    # no hands are dealt when shuffleing
+    self.hands.clear()
     if deck is None:
-      deck = self.cards.copy()
+      deck = self.cards.getcards()
     # split the deck in two
-    cardsindex = list(range(0,len(deck)))
-    for i in range(0,100):
+    cardsindex = list(range(0, len(deck)))
+    for i in range(0, 100):
       random.shuffle(cardsindex)
     suffleddeck = []
     for i in cardsindex:
       suffleddeck.append(deck[i])
-    
     self.deck = suffleddeck.copy()
 
-  def deal(self, cards=5, hands=4):
+  def deal(self, cards=5, hands=4, verbose=False):
     if len(self.deck) < cards * hands:
-      print('New Deck')
-      self.deck = self.cards.copy()
+      if verbose: print('New Deck')
+      self.deck = self.cards.getcards()
       self.shuffle()
-    self.hands = dict()
-    for j in range(0,hands):
+    for j in range(0, hands):
       self.hands[j] = []
-    for i in range(0,cards):
-      for j in range(0,hands):
-        self.hands[j].append(self.deck.pop(0))  
+    for _ in range(0, cards):
+      for j in range(0, hands):
+        self.hands[j].append(self.deck.pop(0))
 
   def printHands(self):
-    '''
-    look for poker hands:
-      01	Royak fluch
-      02	Straight flush
-      03	Four of a kind
-      04	Full house
-      05	Flush
-      06	Straight
-      07	Three of a kind
-      08  Two pair
-      09  One pair
-      10	High card
-    '''
-    for i in range(0,len(self.hands)):
-      print (self.hands[i])
-  
+    rtnStr = ""
+    if len(self.hands) > 0:
+      for i in range(0, len(self.hands)-1):
+        rtnStr = rtnStr + str(self.hands[i]) + "\n"
+      rtnStr = rtnStr + str(self.hands[i+1])
+    else:
+        rtnStr = "No hands have been dealt."
+    print(rtnStr)
+
+  def __iter__(self):
+    ''' Returns the Iterator object '''
+    return __DeckIterator__(self)
 
   def __repr__(self):
-      return str(self.deck)
-
+    return str(self.deck)
   def __str__(self):
-      return str(self.deck)
+    return str(self.deck)
+
+
+class __DeckIterator__:
+  ''' Iterator class '''
+  def __init__(self, deck):
+    # deck object reference
+    self._deck = deck
+    # member variable to keep track of current index
+    self._index = 0
+
+  def __next__(self):
+    ''''Returns the next value from team object's lists '''
+    if self._index < (len(self._deck.deck)):
+      result = self._deck.deck[self._index]
+      self._index += 1
+      return result
+    # End of Iteration
+    raise StopIteration
