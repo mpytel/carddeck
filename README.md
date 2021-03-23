@@ -2,6 +2,8 @@
  _An object model of cards is loaded into a deck, that is shuffled and dealt out as hands is packaged in the python module **carddeck**._
  
  Carddeck is composed of four python classes: 1) cards, 2) deck, 3) pokerhands, and 4) errors.  It is a concept used to exercise python setup, coding, documenting and packaging for pypi distribution. 
+## Install from PyPi
+`pip install carddeck`
 ## Example
 The defult of five cards in four hands are dealt after creating a deck, and shuffling it.
 
