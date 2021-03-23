@@ -19,16 +19,18 @@ EMAIL = 'martin@pidev.com'
 AUTHOR = 'Martin Pytel'
 REQUIRES_PYTHON = '>=3.6.0'
 VERSION = '0.1.0'
+#PYPIREPO = 'pypi'
+PYPIREPO = 'testpypi'
 # What packages are required for this module to be executed?
 REQUIRED = []
 # What packages are optional?
 EXTRAS = {}
-LICENSE = 'piDev'  # piDev
+LICENSE = 'MIT'  # piDev
 CLASSIFIER = [
     'Development Status :: 3 - Alpha',
     'Intended Audience :: Developers',
     'Topic :: Software Development',
-    'License :: Other/Proprietary License',
+    'License :: ' + LICENSE,
     'Programming Language :: Python',
     'Programming Language :: Python :: 3',
     'Programming Language :: Python :: 3.6',
@@ -88,7 +90,8 @@ class UploadCommand(Command):
         os.system('{0} setup.py sdist bdist_wheel --universal'.format(sys.executable))
 
         self.status('Uploading the package to PyPI via Twine…')
-        os.system('twine upload dist/*')
+        pypiRepoCmd = 'twine upload dist/*'
+        os.system('twine upload --repository ' + PYPIREPO + ' dist/*')
 
         self.status('Pushing git tags…')
         os.system('git tag v{0}'.format(about['__version__']))

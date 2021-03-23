@@ -24,7 +24,7 @@ class deck():
 
   def deal(self, cards=5, hands=4, verbose=False):
     if len(self.deck) < cards * hands:
-      if verbose: print('New Deck')
+      print('New Deck')
       self.deck = self.cards.getcards()
       self.shuffle()
     for j in range(0, hands):
