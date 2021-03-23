@@ -18,9 +18,9 @@ URL = 'https://github.com/mpytel/carddeck.git'
 EMAIL = 'martin@pidev.com'
 AUTHOR = 'Martin Pytel'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '0.1.0'
-#PYPIREPO = 'pypi'
-PYPIREPO = 'testpypi'
+VERSION = '0.1.2'
+PYPIREPO = 'pypi'
+#PYPIREPO = 'testpypi'
 # What packages are required for this module to be executed?
 REQUIRED = []
 # What packages are optional?
@@ -30,7 +30,7 @@ CLASSIFIER = [
     'Development Status :: 3 - Alpha',
     'Intended Audience :: Developers',
     'Topic :: Software Development',
-    'License :: ' + LICENSE,
+    'License :: OSI Approved :: MIT License',
     'Programming Language :: Python',
     'Programming Language :: Python :: 3',
     'Programming Language :: Python :: 3.6',
