@@ -25,16 +25,16 @@ REQUIRED = []
 EXTRAS = {}
 LICENSE = 'piDev'  # piDev
 CLASSIFIER = [
-    # Trove classifiers
-    # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
+    'Development Status :: 3 - Alpha',
+    'Intended Audience :: Developers',
+    'Topic :: Software Development',
     'License :: Other/Proprietary License',
     'Programming Language :: Python',
     'Programming Language :: Python :: 3',
     'Programming Language :: Python :: 3.6',
-    'Programming Language :: Python :: Implementation :: CPython',
-    'Programming Language :: Python :: Implementation :: PyPy'
+    'Programming Language :: Python :: 3 :: Only',
 ]
-
+KEYWORDS = 'sample, setuptools, development',  # Optional
 # The rest you shouldn't have to touch too much :)
 # ------------------------------------------------
 # Except, perhaps the License and Trove Classifiers!
@@ -120,6 +120,7 @@ setup(
     include_package_data=True,
     license=LICENSE,
     classifiers=CLASSIFIER,
+    keywords=KEYWORDS,
     # $ setup.py publish support.
     cmdclass={
         'upload': UploadCommand,
