@@ -14,7 +14,7 @@ from setuptools import find_packages, setup, Command
 # Package meta-data.
 NAME = 'carddeck'
 DESCRIPTION = 'Python package for a deck of cards'
-URL = 'https://github.com/me/myproject'
+URL = 'https://github.com/mpytel/carddeck.git'
 EMAIL = 'martin@pidev.com'
 AUTHOR = 'Martin Pytel'
 REQUIRES_PYTHON = '>=3.6.0'
