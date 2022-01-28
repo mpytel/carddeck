@@ -1,4 +1,5 @@
 from .cards import cards
+from .pokerhands import PokerHands
 import random
 
 
@@ -37,8 +38,11 @@ class deck():
     rtnStr = ""
     if len(self.hands) > 0:
       for i in range(0, len(self.hands)-1):
-        rtnStr = rtnStr + str(self.hands[i]) + "\n"
-      rtnStr = rtnStr + str(self.hands[i+1])
+        pokerHands = PokerHands()
+        aHand = self.hands[i]
+        rtnStr = rtnStr + str(aHand) + ' ' + pokerHands.getHand(aHand) + "\n"
+      aHand = self.hands[i+1]
+      rtnStr = rtnStr + str(aHand) + ' ' + pokerHands.getHand(aHand)
     else:
         rtnStr = "No hands have been dealt."
     print(rtnStr)

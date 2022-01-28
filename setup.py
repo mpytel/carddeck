@@ -18,7 +18,7 @@ URL = 'https://github.com/mpytel/carddeck.git'
 EMAIL = 'martin@pidev.com'
 AUTHOR = 'Martin Pytel'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '0.1.2'
+VERSION = '0.1.3'
 PYPIREPO = 'pypi'
 #PYPIREPO = 'testpypi'
 # What packages are required for this module to be executed?
@@ -36,11 +36,9 @@ CLASSIFIER = [
     'Programming Language :: Python :: 3.6',
     'Programming Language :: Python :: 3 :: Only',
 ]
-KEYWORDS = 'sample, setuptools, development',  # Optional
-# The rest you shouldn't have to touch too much :)
-# ------------------------------------------------
-# Except, perhaps the License and Trove Classifiers!
-# If you do change the License, remember to change the Trove Classifier for that!
+KEYWORDS = 'card game, sample',  # Optional
+
+#------- set constants above _______#
 
 here = os.path.abspath(os.path.dirname(__file__))
 
@@ -90,8 +88,8 @@ class UploadCommand(Command):
         os.system('{0} setup.py sdist bdist_wheel --universal'.format(sys.executable))
 
         self.status('Uploading the package to PyPI via Twine…')
-        pypiRepoCmd = 'twine upload dist/*'
-        os.system('twine upload --repository ' + PYPIREPO + ' dist/*')
+        pypiRepoCmd = 'twine upload --repository ' + PYPIREPO + ' dist/*'
+        os.system(pypiRepoCmd)
 
         self.status('Pushing git tags…')
         os.system('git tag v{0}'.format(about['__version__']))
@@ -99,8 +97,6 @@ class UploadCommand(Command):
 
         sys.exit()
 
-
-# Where the magic happens:
 setup(
     name=NAME,
     version=about['__version__'],
